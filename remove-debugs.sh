@@ -17,7 +17,7 @@
 # Delete Javascript debugs
 for js in ${JS_DEBUGS[@]};
 do
-  find ./ -type f -path ./_save -prune -o -name '*.js' -exec sed -i "/$js/d" {} \; | wc -c
+  find ./ -type f -path ./_save -prune -o -name '*.js' -exec sed -i "/$js/d" {} \;
 done
 
 # Delete PHP debugs
