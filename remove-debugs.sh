@@ -37,7 +37,7 @@ do
     flagFound=1
     if [[ $flagFound == 1 ]];
     then
-      printf "${red}<<<< Found Javascript debugs >>>>${end}\n"
+      printf "${red}<<<< Found PHP debugs >>>>${end}\n"
     fi
     egrep -rHn --color=always --include="*.php" "$php" . | cut -d":" -f1-2
     flagFound=$[flagFound +1]
