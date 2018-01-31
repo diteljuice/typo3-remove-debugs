@@ -17,19 +17,24 @@
 # Delete Javascript debugs
 for js in ${JS_DEBUGS[@]};
 do
-  find ./ -type f -path ./_save -prune -o -name '*.js' -exec sed -i "/$js/d" {} \;
+  #find ./ -type f -path ./_save -prune -o -name '*.js' -exec sed -i "/$js/d" {} \;
 done
 
 # Delete PHP debugs
 for php in ${PHP_DEBUGS[@]};
 do
-  find ./ -path ./_save -prune -o -name '*.php*' -exec sed -i "/$php/d" {} \;
+  #find ./ -path ./_save -prune -o -name '*.php*' -exec sed -i "/$php/d" {} \;
 done
 
 # Delete Fluid debugs
 for f in ${FLUID_DEBUGS[@]};
 do
-  find ./ -type f -path ./_save -prune -o -name '*.html' -exec sed -i "/$f/d" {} \;
+  if egrep -cqr --include="*.html" "$f" . | cut -d":" -f1-2;
+  then
+    printf "<<<< Found Fluid debugs:>>>>\n"
+    egrep -rHn --include="*.html" "$f" . | cut -d":" -f1-2
+    printf "<<<< Found Fluid debugs:>>>>\n\n"
+  fi
 done
 
-echo "--- Remove debug script done ---"
+echo "--- \"Check for debugs\" script done ---"
