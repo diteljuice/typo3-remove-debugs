@@ -29,10 +29,10 @@ done
 # Delete PHP debugs
 for php in ${PHP_DEBUGS[@]};
 do
-  if egrep -qr --include="*.html" "$php" .;
+  if egrep -qr --include="*.php" "$php" .;
   then
     printf "<<<< Found PHP debugs >>>>\n"
-    egrep -rHn --include="*.html" "$php" . | cut -d":" -f1-2
+    egrep -rHn --include="*.php" "$php" . | cut -d":" -f1-2
     printf "<<<< Found PHP debugs >>>>\n\n"
     flagFound=1
   fi
