@@ -22,9 +22,9 @@ do
     flagFound=1
     if [[ $flagFound == 1 ]];
     then
-      printf "<<<< Found Javascript debugs >>>>\n"
+      printf "${red}<<<< Found Javascript debugs >>>>${end}\n"
     fi
-    egrep -rHn --include="*.js" "$js" . | cut -d":" -f1-2
+    egrep -rHn --color=always --include="*.js" "$js" . | cut -d":" -f1-2
     flagFound=$[flagFound +1]
   fi
 done
@@ -37,9 +37,9 @@ do
     flagFound=1
     if [[ $flagFound == 1 ]];
     then
-      printf "<<<< Found Javascript debugs >>>>\n"
+      printf "${red}<<<< Found Javascript debugs >>>>${end}\n"
     fi
-    egrep -rHn --include="*.php" "$php" . | cut -d":" -f1-2
+    egrep -rHn --color=always --include="*.php" "$php" . | cut -d":" -f1-2
     flagFound=$[flagFound +1]
   fi
 done
@@ -52,9 +52,9 @@ do
     flagFound=1
     if [[ $flagFound == 1 ]];
     then
-      printf "<<<< Found Fluid debugs >>>>\n"
+      printf "${red}<<<< Found Fluid debugs >>>>${end}\n"
     fi
-    egrep -rHn --include="*.html" "$f" . | cut -d":" -f1-2
+    egrep -rHn --color=always --include="*.html" "$f" . | cut -d":" -f1-2
     flagFound=$[flagFound +1]
   fi
 done
