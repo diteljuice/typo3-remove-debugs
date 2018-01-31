@@ -19,9 +19,9 @@ for js in ${JS_DEBUGS[@]};
 do
   if egrep -qr --include="*.js" "$js" .;
   then
-    printf "<<<< Found Javascript debugs:>>>>\n"
+    printf "<<<< Found Javascript debugs >>>>\n"
     egrep -rHn --include="*.js" "$js" . | cut -d":" -f1-2
-    printf "<<<< Found Javascript debugs:>>>>\n\n"
+    printf "<<<< Found Javascript debugs >>>>\n\n"
     flagFound=1
   fi
 done
@@ -31,9 +31,9 @@ for php in ${PHP_DEBUGS[@]};
 do
   if egrep -qr --include="*.html" "$php" .;
   then
-    printf "<<<< Found PHP debugs:>>>>\n"
+    printf "<<<< Found PHP debugs >>>>\n"
     egrep -rHn --include="*.html" "$php" . | cut -d":" -f1-2
-    printf "<<<< Found PHP debugs:>>>>\n\n"
+    printf "<<<< Found PHP debugs >>>>\n\n"
     flagFound=1
   fi
 done
@@ -43,9 +43,9 @@ for f in ${FLUID_DEBUGS[@]};
 do
   if egrep -qr --include="*.html" "$f" .;
   then
-    printf "<<<< Found Fluid debugs:>>>>\n"
+    printf "<<<< Found Fluid debugs >>>>\n"
     egrep -rHn --include="*.html" "$f" . | cut -d":" -f1-2
-    printf "<<<< Found Fluid debugs:>>>>\n\n"
+    printf "<<<< Found Fluid debugs >>>>\n\n"
     flagFound=1
   fi
 done
