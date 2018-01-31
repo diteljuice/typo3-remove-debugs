@@ -26,15 +26,27 @@
 #   #find ./ -path ./_save -prune -o -name '*.php*' -exec sed -i "/$php/d" {} \;
 # done
 
+echo $?
+flagFound=0
+
 # Delete Fluid debugs
 for f in ${FLUID_DEBUGS[@]};
 do
-  if egrep -cqr --include="*.html" "$f" . | cut -d":" -f1-2;
+  if egrep -r --include="*.html" "$f" .;
   then
     printf "<<<< Found Fluid debugs:>>>>\n"
     egrep -rHn --include="*.html" "$f" . | cut -d":" -f1-2
     printf "<<<< Found Fluid debugs:>>>>\n\n"
+    echo "in then: $?"
+    flagFound=1
   fi
 done
 
-echo "--- \"Check for debugs\" script done ---"
+if [[ $flagFound == 1]];
+then
+  exit 1
+else
+  exit 0
+fi
+
+#echo "--- \"Check for debugs\" script done ---"
