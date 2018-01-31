@@ -17,10 +17,10 @@
 # Delete Javascript debugs
 for js in ${JS_DEBUGS[@]};
 do
-  if egrep -r --include="*.js" "$php" .;
+  if egrep -qr --include="*.js" "$js" .;
   then
     printf "<<<< Found Javascript debugs:>>>>\n"
-    egrep -rHn --include="*.js" "$php" . | cut -d":" -f1-2
+    egrep -rHn --include="*.js" "$js" . | cut -d":" -f1-2
     printf "<<<< Found Javascript debugs:>>>>\n\n"
     flagFound=1
   fi
@@ -29,7 +29,7 @@ done
 # Delete PHP debugs
 for php in ${PHP_DEBUGS[@]};
 do
-  if egrep -r --include="*.html" "$php" .;
+  if egrep -qr --include="*.html" "$php" .;
   then
     printf "<<<< Found PHP debugs:>>>>\n"
     egrep -rHn --include="*.html" "$php" . | cut -d":" -f1-2
@@ -41,7 +41,7 @@ done
 # Delete Fluid debugs
 for f in ${FLUID_DEBUGS[@]};
 do
-  if egrep -r --include="*.html" "$f" .;
+  if egrep -qr --include="*.html" "$f" .;
   then
     printf "<<<< Found Fluid debugs:>>>>\n"
     egrep -rHn --include="*.html" "$f" . | cut -d":" -f1-2
