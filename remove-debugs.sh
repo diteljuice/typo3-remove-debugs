@@ -19,10 +19,13 @@ for js in ${JS_DEBUGS[@]};
 do
   if egrep -qr --include="*.js" "$js" .;
   then
-    printf "<<<< Found Javascript debugs >>>>\n"
-    egrep -rHn --include="*.js" "$js" . | cut -d":" -f1-2
-    printf "<<<< Found Javascript debugs >>>>\n\n"
     flagFound=1
+    if [[ $flagFound == 1 ]];
+    then
+      printf "<<<< Found Javascript debugs >>>>\n"
+    fi
+    egrep -rHn --include="*.js" "$js" . | cut -d":" -f1-2
+    flagFound=$[flagFound +1]
   fi
 done
 
@@ -31,10 +34,13 @@ for php in ${PHP_DEBUGS[@]};
 do
   if egrep -qr --include="*.php" "$php" .;
   then
-    printf "<<<< Found PHP debugs >>>>\n"
-    egrep -rHn --include="*.php" "$php" . | cut -d":" -f1-2
-    printf "<<<< Found PHP debugs >>>>\n\n"
     flagFound=1
+    if [[ $flagFound == 1 ]];
+    then
+      printf "<<<< Found Javascript debugs >>>>\n"
+    fi
+    egrep -rHn --include="*.php" "$php" . | cut -d":" -f1-2
+    flagFound=$[flagFound +1]
   fi
 done
 
@@ -43,15 +49,18 @@ for f in ${FLUID_DEBUGS[@]};
 do
   if egrep -qr --include="*.html" "$f" .;
   then
-    printf "<<<< Found Fluid debugs >>>>\n"
-    egrep -rHn --include="*.html" "$f" . | cut -d":" -f1-2
-    printf "<<<< Found Fluid debugs >>>>\n\n"
     flagFound=1
+    if [[ $flagFound == 1 ]];
+    then
+      printf "<<<< Found Fluid debugs >>>>\n"
+    fi
+    egrep -rHn --include="*.html" "$f" . | cut -d":" -f1-2
+    flagFound=$[flagFound +1]
   fi
 done
 
 # Return exit code depending on flagFound
-if [[ $flagFound == 1 ]];
+if [[ $flagFound -ge 1 ]];
 then
   exit 1
 else
