@@ -42,7 +42,7 @@ do
   fi
 done
 
-if [[ $flagFound == 1]];
+if [[ $flagFound == 1 ]];
 then
   exit 1
 else
